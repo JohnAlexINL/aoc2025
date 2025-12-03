@@ -1,7 +1,14 @@
 #!/bin/sh
+rm ./runs/* -rf
 
     # Day 1
 bytes data data/1.dat day1/dat.h
 # bytes data data/1example.dat day1/dat.h
-gcc -o runs/1 day1/dial.c -D ANYCLICK
+gcc -o runs/1 day1/dial.c -D ANYCLICK # -D DEBUG
 ./runs/1
+
+    # Day 2
+# bytes data data/2.dat day2/dat.h
+bytes data data/2example.dat day2/dat.h
+gcc -o runs/2 day2/ids.c # -D DEBUG
+./runs/2

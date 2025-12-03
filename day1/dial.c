@@ -49,7 +49,7 @@ int dialParse(char *input) {
 }
 
 int main () {
-    printf("Processing data stream [%d bytes]\n", sizeof(data));
+    printf("** DAY 1 ** Processing data stream [%-8d bytes]; ", sizeof(data));
     int steps = 0; char *stream = data; 
     int cursor = 0;
     while (1) {
