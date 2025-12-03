@@ -1,0 +1,7 @@
+#!/bin/sh
+
+    # Day 1
+bytes data data/1.dat day1/dat.h
+# bytes data data/1example.dat day1/dat.h
+gcc -o runs/1 day1/dial.c -g -D DEBUG
+./runs/1
