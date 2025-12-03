@@ -24,10 +24,14 @@ char * streamAdvance(char *input) {
 }
 
 int dialTurn(int distance) {
-    dialPosition += distance;
-    while   ( dialPosition < 0 )        { dialPosition += 100; }
-    while   ( dialPosition >= 100 )     { dialPosition -= 100; }
-    if ( dialPosition == 0 ) { dialZeros ++; }
+    int step; if (distance < 0) { step = -1; } else { step = 1; }
+    while( distance != 0 ) {
+        dialPosition += step; 
+            if ( dialPosition == 0 )    { dialZeros++; }
+            if ( dialPosition == 100 )  { dialZeros++; dialPosition -= 100; }
+            if ( dialPosition < 0 )     { dialPosition += 100; }
+        distance -= step;
+    }
     log(" { %2d } ", dialPosition);
     return dialPosition;
 }
@@ -45,7 +49,7 @@ int dialParse(char *input) {
 }
 
 int main () {
-    log("Processing data stream [%d bytes]\n", sizeof(data));
+    printf("Processing data stream [%d bytes]\n", sizeof(data));
     int steps = 0; char *stream = data; 
     int cursor = 0;
     while (1) {
@@ -56,5 +60,5 @@ int main () {
         log("\n");
         steps++; stream = streamAdvance(stream);
     }
-    log("\nResult %d calculated in %d steps\n", dialZeros, steps);
+    printf("Result %d calculated in %d turns\n", dialZeros, steps);
 }
